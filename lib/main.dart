@@ -1,3 +1,4 @@
+import 'package:deoflutterproject/deal_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -40,6 +41,7 @@ class _HomepageState extends State<Homepage> {
   _body() {
     return SingleChildScrollView(
       child: SizedBox(
+        // height: 1000,
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +70,17 @@ class _HomepageState extends State<Homepage> {
               width: double.infinity,
               image: NetworkImage(
                   'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
-            )
+            ),
+            const SizedBox(height: 12),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 20)),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const DeallWithRowsPage()));
+              },
+              child: const Text('Enabled'),
+            ),
           ],
         ),
       ),
