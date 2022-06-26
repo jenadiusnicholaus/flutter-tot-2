@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,24 +38,39 @@ class _HomepageState extends State<Homepage> {
   }
 
   _body() {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Container(
-            color: Colors.lightGreen,
-            height: 100,
-            width: 199,
-          ),
-          const SizedBox(height: 12),
-          Container(
-            color: Colors.lightGreen,
-            height: 200,
-            width: 199,
-          ),
-        ],
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              margin: const EdgeInsets.all(8),
+              height: 100,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                color: Color.fromARGB(255, 4, 47, 135),
+              ),
+              child: const Icon(
+                Icons.access_alarm,
+                color: Colors.red,
+                size: 40,
+              ),
+            ),
+            const SizedBox(height: 12),
+            const Text('This asset image'),
+            const Image(image: AssetImage('assets/images/owl.jpg')),
+            const SizedBox(height: 12),
+            const Image(
+              // height: 300,
+              width: double.infinity,
+              image: NetworkImage(
+                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+            )
+          ],
+        ),
       ),
     );
   }
